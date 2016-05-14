@@ -11,16 +11,16 @@
  * @param {string} href ui-shref link
  */
 angular.module('com.module.core')
-  .directive('smallBox', function() {
-    return {
-      restrict: 'E',
-      templateUrl: 'modules/core/views/elements/small-box.html',
-      scope: {
-        name: '@',
-        color: '@',
-        icon: '@',
-        quantity: '@',
-        href: '@'
-      }
-    };
-  });
+    .directive('smallBox', function () {
+        return {
+            restrict: 'E',
+            templateUrl: 'modules/core/views/elements/small-box.html',
+            scope: {
+                name: '@',
+                color: '@',
+                icon: '@',
+                quantity: '@',
+                href: '@'
+            }
+        };
+    });

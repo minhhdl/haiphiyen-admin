@@ -65,8 +65,61 @@ header.header .logo{
   font-family: "Source Sans Pro",sans-serif;
   font-size: 22px;
 }
+body,html {
+  overflow: visible!important;
+}
+.table-header-bar{
+  padding: 15px;
+}
+.navbar-right{
+  margin-right: 0!important;
+}
+label.count-number-of{
+  font-weight: normal;
+  color: #555;
+}
+.select-item-perpage{
+  padding: 0;
+}
+.select-item-perpage select{
+  height: 34px;
+  border-radius: 0px;
+  box-shadow: none;
+  background-color: #fff;
+  width: 70px;
+  margin-left: 10px;
+  border: 1px solid #CCC;
+  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}
+.select-item-perpage:focus {
+    border-color: #3C8DBC !important;
+    box-shadow: none;
+}
+th {
+  color: #555;
+}
+td {
+  color: #777;
+  word-break: break-all;
+}
+/*responsive*/
 @media screen and (max-width: 560px){
   body.fixed .wrapper {
     padding-top: 50px;
   }
+  .select-item-perpage{
+    width: 100%;
+  }
+  .input-group{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 768px){
+  .select-item-perpage{
+    margin-bottom: 15px;
+  }
+}
+
+td span{
+  margin: 3px 0;
 }

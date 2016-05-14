@@ -21,7 +21,6 @@
   <link rel="stylesheet" href="bower_components/flag-icon-css/css/flag-icon.min.css" />
   <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css" />
   <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.min.css" />
-  <link rel="stylesheet" href="bower_components/angular-datatables/dist/css/angular-datatables.min.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css styles/main.css -->
@@ -34,7 +33,7 @@
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<div ui-view ng-class="{'full-height': currentUser.id === undefined}"></div>
+<div ui-view ng-class="{'full-height': currentUser.id === undefined}" style="height: 100%"></div>
 
 <div ng-controller="toasty-controller">
   <toasty-container toasty-defaults='{"timeout": 3000, "close-button":true, "sound": false}'></toasty-container>
@@ -109,7 +108,6 @@
 <script src="bower_components/angular-schema-form-ui-select/ui-sortable.js"></script>
 <script src="bower_components/angular-schema-form-ui-select/angular-underscore.js"></script>
 <script src="bower_components/angular-schema-form-ui-select/bootstrap-ui-select.min.js"></script>
-<script src="bower_components/angular-datatables/dist/angular-datatables.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 <!-- build:js scripts/scripts.js -->
@@ -134,15 +132,27 @@
 <script src="modules/core/directives/small-box.directive.js"></script>
 <script src="modules/core/helpers/FormHelper.js"></script>
 <script src="modules/core/services/core.service.js"></script>
+<script src="modules/core/services/api.service.js"></script>
 <script src="modules/settings/app.settings.js"></script>
 <script src="modules/settings/config/settings.config.js"></script>
 <script src="modules/settings/config/settings.routes.js"></script>
 <script src="modules/settings/controllers/settings.ctrl.js"></script>
 <script src="modules/thue/app.thue.js"></script>
 <script src="modules/thue/config/thue.routes.js"></script>
+<script src="modules/promo/app.promo.js"></script>
+<script src="modules/promo/config/promo.routes.js"></script>
+<script src="modules/promo/controllers/promo.ctrl.js"></script>
+<script src="modules/news/app.news.js"></script>
+<script src="modules/news/config/news.routes.js"></script>
+<script src="modules/news/controllers/news.ctrl.js"></script>
+<script src="modules/panel/app.panel.js"></script>
+<script src="modules/panel/config/panel.routes.js"></script>
+<script src="modules/panel/controllers/panel.ctrl.js"></script>
+<script src="modules/panel/controllers/slide.ctrl.js"></script>
 <script src="modules/users/app.users.js"></script>
 <script src="modules/users/config/users.config.js"></script>
 <script src="modules/users/config/users.routes.js"></script>
+<script src="modules/users/controllers/user.ctrl.js"></script>
 <script src="modules/users/controllers/login.ctrl.js"></script>
 <script src="modules/users/directives/login.js"></script>
 <script src="modules/users/directives/register.js"></script>

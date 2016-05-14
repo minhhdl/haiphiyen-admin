@@ -38,7 +38,10 @@
       'com.module.core',
       'com.module.settings',
       'com.module.users',
-      'com.module.thue'
+      'com.module.thue',
+      'com.module.promo',
+      'com.module.news',
+      'com.module.panel'
     ])
     .run(function (formlyConfig) {
       /*
