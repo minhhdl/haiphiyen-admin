@@ -6,6 +6,7 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
 
 
     function error(response) {
+        console.log(response)
         if (response.status == 401) {
             var config = {
                 title: 'Thông báo',
@@ -80,7 +81,53 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
                 error(response);
             });
     }
+    this.getOneUser = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'GET',
+            url: apiURL + '/users/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
 
+    this.addUser = function (token, data, successCb, errorCb) {
+        $http({
+            method: 'POST',
+            url: apiURL + '/users',
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.deleteUser = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'DELETE',
+            url: apiURL + '/users/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    //News API
     this.getNews = function (token, successCb, errorCb) {
         $http({
             method: 'GET',
@@ -96,6 +143,69 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
             });
     }
 
+    this.getOneNews = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'GET',
+            url: apiURL + '/newses/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.addNews = function (token, data, successCb, errorCb) {
+        $http({
+            method: 'POST',
+            url: apiURL + '/newses',
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.editNews = function (token, data, successCb, errorCb) {
+        $http({
+            method: 'PUT',
+            url: apiURL + '/newses/' + data.id,
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.deleteNews = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'DELETE',
+            url: apiURL + '/newses/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    //Promo API
     this.getPromoNews = function (token, successCb, errorCb) {
         $http({
             method: 'GET',
@@ -110,7 +220,69 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
                 error(response);
             });
     }
+    this.getOnePromo = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'GET',
+            url: apiURL + '/promotions-news/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
 
+    this.addPromo = function (token, data, successCb, errorCb) {
+        $http({
+            method: 'POST',
+            url: apiURL + '/promotions-news',
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.editPromo = function (token, data, successCb, errorCb) {
+        $http({
+            method: 'PUT',
+            url: apiURL + '/promotions-news/' + data.id,
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.deletePromo = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'DELETE',
+            url: apiURL + '/promotions-news/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    //Panels API
     this.getPanels = function (token, successCb, errorCb) {
         $http({
             method: 'GET',
@@ -125,7 +297,68 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
                 error(response);
             });
     }
+    this.getOnePanel = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'GET',
+            url: apiURL + '/panels/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
 
+    this.addPanel = function (token, data, successCb, errorCb) {
+        $http({
+            method: 'POST',
+            url: apiURL + '/panels',
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.editPanel = function (token, data, successCb, errorCb) {
+        $http({
+            method: 'PUT',
+            url: apiURL + '/panels/' + data.id,
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.deletePanel = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'DELETE',
+            url: apiURL + '/panels/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+    //Slides API
     this.getSlides = function (token, successCb, errorCb) {
         $http({
             method: 'GET',
@@ -140,5 +373,65 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
                 error(response);
             });
     }
+    this.getOneSlide = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'GET',
+            url: apiURL + '/slidess/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
 
+    this.addSlide = function (token, data, successCb, errorCb) {
+        $http({
+            method: 'POST',
+            url: apiURL + '/slides',
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.editSlide = function (token, data, successCb, errorCb) {
+        $http({
+            method: 'PUT',
+            url: apiURL + '/slides/' + data.id,
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.deleteSlide = function (token, id, successCb, errorCb) {
+        $http({
+            method: 'DELETE',
+            url: apiURL + '/slides/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
 });

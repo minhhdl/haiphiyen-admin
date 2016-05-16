@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('com.module.users')
-    .controller('UserCtrl', function (ApiService, $scope, $window) {
+    .controller('UserCtrl', function (ApiService, $scope, $window, CoreService) {
         $scope.loading = true;
         $scope.searchText = '';
         ApiService.getUsers(localStorage.accessToken, function (response) {
@@ -26,5 +26,16 @@ angular.module('com.module.users')
                 $scope.currentPage = 1; //reset to first paghe
                 $scope.totalPage = Math.ceil($scope.totalItems / $scope.itemsPerPage);
             };
+            $scope.deleteUser = function (id) {
+                CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
+                    ApiService.deleteUser(localStorage.accessToken, id, function () {
+                        ApiService.getUsers(localStorage.accessToken, function (response) {
+                            $scope.users = response.data;
+                        })
+                    })
+                }, function () {
+
+                })
+            }
         })
     })

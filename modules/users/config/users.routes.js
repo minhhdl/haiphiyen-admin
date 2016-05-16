@@ -18,6 +18,11 @@
                     url: '',
                     templateUrl: 'modules/users/views/list.html',
                     controller: 'UserCtrl'
+                })
+                .state('app.users.add', {
+                    url: '/add',
+                    templateUrl: 'modules/users/views/form.html',
+                    controller: 'UserFormCtrl'
                 });
         });
 

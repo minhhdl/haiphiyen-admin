@@ -22,16 +22,7 @@ angular.module('com.module.core')
                 });
         }
         if (!localStorage.accessToken) {
-            var config = {
-                title: 'Thông báo',
-                text: 'Bạn chưa đăng nhập. Vui lòng đăng nhập để sử dụng dịch vụ',
-                type: 'warning',
-                showCancelButton: false,
-                confirmButtonColor: '#DD6B55'
-            }
-            CoreService._swal(config, function () {
-                $state.go('login');
-            })
+            $state.go('login')
         }
         $scope.menuoptions = [{
             "menuList": [
@@ -86,10 +77,10 @@ angular.module('com.module.core')
                         "sref": "app.panel.list"
                     }, {
                         "name": "Thêm slide trang chủ",
-                        "sref": "app.panel.addSlide"
+                        "sref": "app.slide.add"
                     }, {
                         "name": "Thêm panel quảng cáo",
-                        "sref": "app.panel.addPanel"
+                        "sref": "app.panel.add"
                     }]
                 }]
         }, {

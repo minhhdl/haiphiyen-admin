@@ -5,7 +5,7 @@ angular.module('com.module.panel')
         $scope.loading = true;
         $scope.searchText = '';
         ApiService.getPanels(localStorage.accessToken, function (response) {
-
+            console.log(response.data)
             $scope.panels = response.data;
             $scope.myOrder = 'id';
             $scope.myReverse = false;

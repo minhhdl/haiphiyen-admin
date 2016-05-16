@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('com.module.promo')
-    .controller('PromoCtrl', function (ApiService, $scope, $window) {
+    .controller('PromoCtrl', function (ApiService, $scope, $window, CoreService) {
         $scope.loading = true;
         $scope.searchText = '';
         ApiService.getPromoNews(localStorage.accessToken, function (response) {
@@ -26,5 +26,19 @@ angular.module('com.module.promo')
                 $scope.currentPage = 1; //reset to first paghe
                 $scope.totalPage = Math.ceil($scope.totalItems / $scope.itemsPerPage);
             };
+            $scope.deletePromo = function (id) {
+                CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
+                    ApiService.deletePromo(localStorage.accessToken, id, function () {
+                        ApiService.getPromoNews(localStorage.accessToken, function (response) {
+                            $scope.promoNews = response.data;
+                        })
+                    })
+                }, function () {
+
+                })
+            }
+            $scope.onView = function (item) {
+                $scope.viewItem = item;
+            }
         })
     })

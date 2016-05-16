@@ -65,7 +65,7 @@ header.header .logo{
   font-family: "Source Sans Pro",sans-serif;
   font-size: 22px;
 }
-body,html {
+html {
   overflow: visible!important;
 }
 .table-header-bar{
@@ -102,6 +102,26 @@ td {
   color: #777;
   word-break: break-all;
 }
+
+td span{
+  margin: 3px 0;
+}
+
+.controls{
+  text-align: center;
+}
+.controls button{
+  margin: 10px;
+}
+
+.form-add-user {
+  width: 500px;
+  margin: 0 auto;
+}
+.form-add-panel {
+  width: 500px;
+  margin: 0 auto;
+}
 /*responsive*/
 @media screen and (max-width: 560px){
   body.fixed .wrapper {
@@ -113,13 +133,15 @@ td {
   .input-group{
     width: 100%;
   }
+  .form-add-user {
+    width: 100%;
+  }
+  .form-add-panel {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 768px){
   .select-item-perpage{
     margin-bottom: 15px;
   }
-}
-
-td span{
-  margin: 3px 0;
 }

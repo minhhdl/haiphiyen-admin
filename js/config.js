@@ -1,7 +1,7 @@
 "use strict";
 
- angular.module('config', [])
+angular.module('config', [])
 
-.constant('ENV', {name:'production',apiUrl:'/api/',siteUrl:''})
+    .constant('ENV', {name: 'production', apiUrl: '/api/', siteUrl: ''})
 
 ;

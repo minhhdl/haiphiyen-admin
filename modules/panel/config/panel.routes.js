@@ -3,24 +3,34 @@ angular.module('com.module.panel')
         $stateProvider
             .state('app.panel', {
                 url: '/panels',
-                templateUrl: 'modules/panel/views/mainPanel.html',
+                templateUrl: 'modules/panel/views/main-panel.html',
                 abstract: true
             })
             .state('app.panel.list', {
                 url: '',
-                templateUrl: 'modules/panel/views/listPanel.html',
+                templateUrl: 'modules/panel/views/list-panel.html',
                 controller: 'PanelCtrl'
+            })
+            .state('app.panel.add', {
+                url: '/add',
+                templateUrl: 'modules/panel/views/form-panel.html',
+                controller: 'PanelFormCtrl'
             })
 
 
             .state('app.slide', {
                 url: '/slides',
-                templateUrl: 'modules/panel/views/mainSlide.html',
+                templateUrl: 'modules/panel/views/main-slide.html',
                 abstract: true
             })
             .state('app.slide.list', {
                 url: '',
-                templateUrl: 'modules/panel/views/listSlide.html',
+                templateUrl: 'modules/panel/views/list-slide.html',
                 controller: 'SlideCtrl'
+            })
+            .state('app.slide.add', {
+                url: '/add',
+                templateUrl: 'modules/panel/views/form-slide.html',
+                controller: 'SlideFormCtrl'
             });
     })

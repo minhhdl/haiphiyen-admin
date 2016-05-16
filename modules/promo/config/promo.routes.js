@@ -11,4 +11,14 @@ angular.module('com.module.promo')
                 templateUrl: 'modules/promo/views/list.html',
                 controller: 'PromoCtrl'
             })
+            .state('app.promo.add', {
+                url: '/add',
+                templateUrl: 'modules/promo/views/form.html',
+                controller: 'PromoFormCtrl'
+            })
+            .state('app.promo.edit', {
+                url: '/edit/:id',
+                templateUrl: 'modules/promo/views/form.html',
+                controller: 'PromoFormCtrl'
+            });
     })

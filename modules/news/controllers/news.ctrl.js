@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('com.module.news')
-    .controller('NewsCtrl', function (ApiService, $scope, $window) {
+    .controller('NewsCtrl', function (ApiService, $scope, $window, $state, CoreService, $stateParams) {
+
         $scope.loading = true;
         $scope.searchText = '';
         ApiService.getNews(localStorage.accessToken, function (response) {
-
+            console.log(response.data)
             $scope.news = response.data;
             $scope.myOrder = 'id';
             $scope.myReverse = false;
@@ -26,5 +27,21 @@ angular.module('com.module.news')
                 $scope.currentPage = 1; //reset to first paghe
                 $scope.totalPage = Math.ceil($scope.totalItems / $scope.itemsPerPage);
             };
+            $scope.deleteNews = function (id) {
+                CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
+                    ApiService.deleteNews(localStorage.accessToken, id, function () {
+                        ApiService.getNews(localStorage.accessToken, function (response) {
+                            $scope.news = response.data;
+                        })
+                    })
+                }, function () {
+
+                })
+            }
+            $scope.onView = function (item) {
+                $scope.viewItem = item;
+            }
         })
+
+
     })
