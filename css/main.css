@@ -66,7 +66,7 @@ header.header .logo{
   font-size: 22px;
 }
 html, body {
-  overflow-y: visible!important;
+  overflow-x: visible!important;
   height: auto;
 }
 .right-side{
@@ -177,5 +177,10 @@ td span{
 @media screen and (max-width: 768px){
   .select-item-perpage{
     margin-bottom: 15px;
+  }
+}
+@media screen and (max-width: 991px){
+  html, body{
+    overflow-x: hidden!important;
   }
 }

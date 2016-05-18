@@ -7,8 +7,8 @@ angular.module('com.module.panel')
         ApiService.find('slides', localStorage.accessToken, function (response) {
 
             $scope.slides = response.data;
-            $scope.myOrder = 'id';
-            $scope.myReverse = false;
+            $scope.myOrder = '';
+            $scope.myReverse = true;
             $scope.loading = false;
             $scope.orderMe = function (orderBy) {
                 $scope.myOrder = orderBy;

@@ -20,14 +20,6 @@
         <table ng-show="priceOptions.length" class="table table-bordered" style="background-color: #ffffff">
             <thead>
             <tr>
-                <th ng-click="orderMe('id')">
-                    No.
-                    <div class="sorting" ng-show="myOrder =='id'">
-                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
-                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
-                    </div>
-                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='id'"></i>
-                </th>
                 <th ng-click="orderMe('airlineCode')">
                     Hãng
                     <div class="sorting" ng-show="myOrder =='airlineCode'">
@@ -57,9 +49,6 @@
             </thead>
             <tbody>
             <tr ng-repeat="item in priceOptions.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:myOrder:myReverse | filter:searchText">
-                <td>
-                    {{item.id}}
-                </td>
                 <td>
                     {{item.airlineCode}}
                 </td>

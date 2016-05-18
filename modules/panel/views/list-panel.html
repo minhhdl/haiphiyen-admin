@@ -56,9 +56,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in panels.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:myOrder:myReverse | filter:searchText">
+            <tr ng-repeat="item in items = panels.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:myOrder:myReverse | filter:searchText">
                 <td>
-                    {{item.id}}
+                    {{items.indexOf(item) + 1}}
                 </td>
                 <td>
                     <img src="{{item.image}}" class="image-table">

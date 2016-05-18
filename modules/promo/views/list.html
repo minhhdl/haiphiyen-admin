@@ -48,9 +48,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in promoNews.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:myOrder:myReverse | filter:searchText">
+            <tr ng-repeat="item in items = promoNews.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:myOrder:myReverse | filter:searchText">
                 <td>
-                    {{item.id}}
+                    {{items.indexOf(item) + 1}}
                 </td>
                 <td>
                     {{item.title}}

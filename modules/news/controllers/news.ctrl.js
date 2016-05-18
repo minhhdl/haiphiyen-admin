@@ -7,8 +7,8 @@ angular.module('com.module.news')
         $scope.searchText = '';
         ApiService.find('newses', localStorage.accessToken, function (response) {
             $scope.news = response.data;
-            $scope.myOrder = 'id';
-            $scope.myReverse = false;
+            $scope.myOrder = '';
+            $scope.myReverse = true;
             $scope.loading = false;
             $scope.orderMe = function (orderBy) {
                 $scope.myOrder = orderBy;

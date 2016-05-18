@@ -24,6 +24,13 @@ angular.module('com.module.core')
         if (!localStorage.accessToken) {
             $state.go('login')
         }
+
+        $rootScope.hideScrollBar = function(){
+            $('html').css({
+                'overflow': 'hidden'
+            })
+        }
+
         $scope.menuoptions = [{
             "menuList": [
                 {

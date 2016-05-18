@@ -7,8 +7,8 @@ angular.module('com.module.users')
         ApiService.find('users', localStorage.accessToken, function (response) {
 
             $scope.users = response.data;
-            $scope.myOrder = 'id';
-            $scope.myReverse = false;
+            $scope.myOrder = '';
+            $scope.myReverse = true;
             $scope.loading = false;
             $scope.orderMe = function (orderBy) {
                 $scope.myOrder = orderBy;

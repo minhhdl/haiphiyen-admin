@@ -4,7 +4,7 @@ angular.module('com.module.core')
         $stateProvider
             .state('router', {
                 url: '/router',
-                template: '<div class="lockscreen" style="height: 100%"></div>',
+                template: '<div class="lockscreen" style="height: 100vh"></div>',
                 controller: 'RouteCtrl'
             })
             .state('app', {

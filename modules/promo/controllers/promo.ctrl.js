@@ -7,8 +7,8 @@ angular.module('com.module.promo')
         ApiService.find('promotions-news', localStorage.accessToken, function (response) {
 
             $scope.promoNews = response.data;
-            $scope.myOrder = 'id';
-            $scope.myReverse = false;
+            $scope.myOrder = '';
+            $scope.myReverse = true;
             $scope.loading = false;
             $scope.orderMe = function (orderBy) {
                 $scope.myOrder = orderBy;
