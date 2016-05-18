@@ -34,6 +34,7 @@ angular.module('com.module.priceOptions')
                 }
                 ApiService.editPriceOption(localStorage.accessToken, item.id, data, function(){
                     ApiService.getPriceOptions(localStorage.accessToken, function (response) {
+                        CoreService.toastSuccess('Success!');
                         $scope.priceOptions = response.data;
                     })
                 })

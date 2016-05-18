@@ -30,6 +30,7 @@ angular.module('com.module.panel')
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
                     ApiService.deleteSlide(localStorage.accessToken, id, function () {
                         ApiService.getSlides(localStorage.accessToken, function (response) {
+                            CoreService.toastSuccess('Success!');
                             $scope.slides = response.data;
                         })
                     })
@@ -46,6 +47,7 @@ angular.module('com.module.panel')
             $scope.editSlide = function(item){
                 ApiService.editSlide(localStorage.accessToken, item, function(){
                     ApiService.getSlides(localStorage.accessToken, function (response) {
+                        CoreService.toastSuccess('Success!');
                         $scope.slides = response.data;
                     })
                 })

@@ -30,6 +30,7 @@ angular.module('com.module.promo')
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
                     ApiService.deletePromo(localStorage.accessToken, id, function () {
                         ApiService.getPromoNews(localStorage.accessToken, function (response) {
+                            CoreService.toastSuccess('Success!');
                             $scope.promoNews = response.data;
                         })
                     })

@@ -30,6 +30,7 @@ angular.module('com.module.users')
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
                     ApiService.deleteUser(localStorage.accessToken, id, function () {
                         ApiService.getUsers(localStorage.accessToken, function (response) {
+                            CoreService.toastSuccess('Success!');
                             $scope.users = response.data;
                         })
                     })

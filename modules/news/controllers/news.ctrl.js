@@ -31,6 +31,7 @@ angular.module('com.module.news')
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
                     ApiService.deleteNews(localStorage.accessToken, id, function () {
                         ApiService.getNews(localStorage.accessToken, function (response) {
+                            CoreService.toastSuccess('Success!');
                             $scope.news = response.data;
                         })
                     })

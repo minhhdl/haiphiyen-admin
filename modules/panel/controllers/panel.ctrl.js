@@ -30,6 +30,7 @@ angular.module('com.module.panel')
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
                     ApiService.deletePanel(localStorage.accessToken, id, function () {
                         ApiService.getPanels(localStorage.accessToken, function (response) {
+                            CoreService.toastSuccess('Success!');
                             $scope.panels = response.data;
                         })
                     })
@@ -46,6 +47,7 @@ angular.module('com.module.panel')
             $scope.editPanel = function(item){
                 ApiService.editPanel(localStorage.accessToken, item, function(){
                     ApiService.getPanels(localStorage.accessToken, function (response) {
+                        CoreService.toastSuccess('Success!');
                         $scope.panels = response.data;
                     })
                 })
