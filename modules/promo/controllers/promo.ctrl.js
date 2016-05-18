@@ -4,7 +4,7 @@ angular.module('com.module.promo')
     .controller('PromoCtrl', function (ApiService, $scope, $window, CoreService) {
         $scope.loading = true;
         $scope.searchText = '';
-        ApiService.getPromoNews(localStorage.accessToken, function (response) {
+        ApiService.find('promotions-news', localStorage.accessToken, function (response) {
 
             $scope.promoNews = response.data;
             $scope.myOrder = 'id';
@@ -28,8 +28,8 @@ angular.module('com.module.promo')
             };
             $scope.deletePromo = function (id) {
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
-                    ApiService.deletePromo(localStorage.accessToken, id, function () {
-                        ApiService.getPromoNews(localStorage.accessToken, function (response) {
+                    ApiService.deleteById('promotions-news', localStorage.accessToken, id, function () {
+                        ApiService.find('promotions-news', localStorage.accessToken, function (response) {
                             CoreService.toastSuccess('Success!');
                             $scope.promoNews = response.data;
                         })

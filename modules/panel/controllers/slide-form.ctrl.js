@@ -12,7 +12,7 @@ angular.module('com.module.panel')
             formData.append('image', image);
             formData.append('link', link);
             formData.append('index', index);
-            ApiService.addSlide(localStorage.accessToken, formData, function (response) {
+            ApiService.create('slides', localStorage.accessToken, formData, function (response) {
                 CoreService.toastSuccess('Success!');
                 $state.go('app.slide.list');
             })

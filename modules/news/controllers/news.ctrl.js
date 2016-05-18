@@ -5,8 +5,7 @@ angular.module('com.module.news')
 
         $scope.loading = true;
         $scope.searchText = '';
-        ApiService.getNews(localStorage.accessToken, function (response) {
-            console.log(response.data)
+        ApiService.find('newses', localStorage.accessToken, function (response) {
             $scope.news = response.data;
             $scope.myOrder = 'id';
             $scope.myReverse = false;
@@ -29,7 +28,7 @@ angular.module('com.module.news')
             };
             $scope.deleteNews = function (id) {
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
-                    ApiService.deleteNews(localStorage.accessToken, id, function () {
+                    ApiService.deleteById('newses', localStorage.accessToken, id, function () {
                         ApiService.getNews(localStorage.accessToken, function (response) {
                             CoreService.toastSuccess('Success!');
                             $scope.news = response.data;

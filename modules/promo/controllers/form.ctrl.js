@@ -17,15 +17,14 @@ angular.module('com.module.promo')
         })
 
         if ($stateParams.id) {
-            ApiService.getOnePromo(localStorage.accessToken, $stateParams.id, function (response) {
-                console.log(response)
+            ApiService.findOne('promotions-news', localStorage.accessToken, $stateParams.id, function (response) {
                 $scope.loading = false;
                 $scope.promo = response.data;
                 $('#editor').html(response.data.content)
             })
             $scope.onSubmit = function () {
                 $scope.promo.content = $('#editor').cleanHtml();
-                ApiService.editPromo(localStorage.accessToken, $scope.promo, function (response) {
+                ApiService.update('promotions-news', localStorage.accessToken, $scope.promo, function (response) {
                     CoreService.toastSuccess('Success!');
                     $state.go('app.promo.list');
                 })
@@ -35,7 +34,7 @@ angular.module('com.module.promo')
             $scope.promo = {};
             $scope.onSubmit = function () {
                 $scope.promo.content = $('#editor').cleanHtml();
-                ApiService.addPromo(localStorage.accessToken, $scope.promo, function (response) {
+                ApiService.create('promotions-news', localStorage.accessToken, $scope.promo, function (response) {
                     CoreService.toastSuccess('Success!');
                     $state.go('app.promo.list');
                 })

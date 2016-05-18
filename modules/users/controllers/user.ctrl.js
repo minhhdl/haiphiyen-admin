@@ -4,7 +4,7 @@ angular.module('com.module.users')
     .controller('UserCtrl', function (ApiService, $scope, $window, CoreService) {
         $scope.loading = true;
         $scope.searchText = '';
-        ApiService.getUsers(localStorage.accessToken, function (response) {
+        ApiService.find('users', localStorage.accessToken, function (response) {
 
             $scope.users = response.data;
             $scope.myOrder = 'id';
@@ -28,8 +28,8 @@ angular.module('com.module.users')
             };
             $scope.deleteUser = function (id) {
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
-                    ApiService.deleteUser(localStorage.accessToken, id, function () {
-                        ApiService.getUsers(localStorage.accessToken, function (response) {
+                    ApiService.deleteById('users', localStorage.accessToken, id, function () {
+                        ApiService.find('users', localStorage.accessToken, function (response) {
                             CoreService.toastSuccess('Success!');
                             $scope.users = response.data;
                         })

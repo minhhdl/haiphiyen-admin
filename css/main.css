@@ -65,8 +65,12 @@ header.header .logo{
   font-family: "Source Sans Pro",sans-serif;
   font-size: 22px;
 }
-html {
-  overflow: visible!important;
+html, body {
+  overflow-y: visible!important;
+  height: auto;
+}
+.right-side{
+  min-height: 500px;
 }
 .table-header-bar{
   padding: 15px;
@@ -141,7 +145,9 @@ td span{
   height: 300px; 
   width: 200px;
 }
-
+.text-center ul.pagination {
+  margin-bottom: 30px;
+}
 /*responsive*/
 @media screen and (max-width: 460px){
   .show-image{

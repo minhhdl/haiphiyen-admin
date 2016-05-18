@@ -5,7 +5,7 @@ angular.module('com.module.users')
 
         $scope.user = {};
         $scope.onSubmit = function () {
-            ApiService.addUser(localStorage.accessToken, $scope.user, function (response) {
+            ApiService.create('users', localStorage.accessToken, $scope.user, function (response) {
                 CoreService.toastSuccess('Success!');
                 $state.go('app.users.list');
             })

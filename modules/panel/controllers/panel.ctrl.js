@@ -4,8 +4,7 @@ angular.module('com.module.panel')
     .controller('PanelCtrl', function (ApiService, $scope, $window, CoreService) {
         $scope.loading = true;
         $scope.searchText = '';
-        ApiService.getPanels(localStorage.accessToken, function (response) {
-            console.log(response.data)
+        ApiService.find('panels', localStorage.accessToken, function (response) {
             $scope.panels = response.data;
             $scope.myOrder = 'id';
             $scope.myReverse = false;
@@ -28,8 +27,8 @@ angular.module('com.module.panel')
             };
             $scope.deletePanel = function (id) {
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
-                    ApiService.deletePanel(localStorage.accessToken, id, function () {
-                        ApiService.getPanels(localStorage.accessToken, function (response) {
+                    ApiService.deleteById('panels', localStorage.accessToken, id, function () {
+                        ApiService.find('panels', localStorage.accessToken, function (response) {
                             CoreService.toastSuccess('Success!');
                             $scope.panels = response.data;
                         })
@@ -45,8 +44,8 @@ angular.module('com.module.panel')
                 $scope.editItem = item;
             }
             $scope.editPanel = function(item){
-                ApiService.editPanel(localStorage.accessToken, item, function(){
-                    ApiService.getPanels(localStorage.accessToken, function (response) {
+                ApiService.update('panels', localStorage.accessToken, item, function(){
+                    ApiService.find('panels', localStorage.accessToken, function (response) {
                         CoreService.toastSuccess('Success!');
                         $scope.panels = response.data;
                     })

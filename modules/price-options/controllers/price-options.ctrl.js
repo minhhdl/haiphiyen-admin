@@ -3,7 +3,6 @@ angular.module('com.module.priceOptions')
 		$scope.loading = true;
         $scope.searchText = '';
         ApiService.getPriceOptions(localStorage.accessToken, function (response) {
-        	console.log(response.data)
             $scope.priceOptions = response.data;
             $scope.myOrder = 'id';
             $scope.myReverse = false;

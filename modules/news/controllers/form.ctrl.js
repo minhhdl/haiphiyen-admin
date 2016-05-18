@@ -17,15 +17,14 @@ angular.module('com.module.news')
         })
 
         if ($stateParams.id) {
-            ApiService.getOneNews(localStorage.accessToken, $stateParams.id, function (response) {
-                console.log(response)
+            ApiService.findOne('newses', localStorage.accessToken, $stateParams.id, function (response) {
                 $scope.loading = false;
                 $scope.news = response.data;
                 $('#editor').html(response.data.content)
             })
             $scope.onSubmit = function () {
                 $scope.news.content = $('#editor').cleanHtml();
-                ApiService.editNews(localStorage.accessToken, $scope.news, function (response) {
+                ApiService.update('newses', localStorage.accessToken, $scope.news, function (response) {
                     CoreService.toastSuccess('Success!');
                     $state.go('app.news.list');
                 })
@@ -35,7 +34,7 @@ angular.module('com.module.news')
             $scope.news = {};
             $scope.onSubmit = function () {
                 $scope.news.content = $('#editor').cleanHtml();
-                ApiService.addNews(localStorage.accessToken, $scope.news, function (response) {
+                ApiService.create('newses', localStorage.accessToken, $scope.news, function (response) {
                     CoreService.toastSuccess('Success!');
                     $state.go('app.news.list');
                 })
