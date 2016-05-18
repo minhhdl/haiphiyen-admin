@@ -57,7 +57,8 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
             method: 'POST',
             url: apiURL + '/users/logout',
             headers: {
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': undefined
             }
         })
             .then(function successCallback(response) {
@@ -116,6 +117,38 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
         $http({
             method: 'DELETE',
             url: apiURL + '/users/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    //Price Options API
+    this.getPriceOptions = function (token, successCb, errorCb) {
+        $http({
+            method: 'GET',
+            url: apiURL + '/price-options',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.editPriceOption = function (token, id, data, successCb, errorCb) {
+        $http({
+            method: 'PUT',
+            url: apiURL + '/price-options/' + id,
+            data: data,
             headers: {
                 'Authorization': 'Bearer ' + token
             }
@@ -318,7 +351,8 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
             url: apiURL + '/panels',
             data: data,
             headers: {
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': undefined
             }
         })
             .then(function successCallback(response) {
@@ -393,8 +427,10 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
             method: 'POST',
             url: apiURL + '/slides',
             data: data,
+            transformRequest: angular.identity,
             headers: {
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': undefined
             }
         })
             .then(function successCallback(response) {

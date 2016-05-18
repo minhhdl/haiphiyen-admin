@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('com.module.panel')
-    .controller('PanelCtrl', function (ApiService, $scope, $window) {
+    .controller('PanelCtrl', function (ApiService, $scope, $window, CoreService) {
         $scope.loading = true;
         $scope.searchText = '';
         ApiService.getPanels(localStorage.accessToken, function (response) {
@@ -26,5 +26,29 @@ angular.module('com.module.panel')
                 $scope.currentPage = 1; //reset to first paghe
                 $scope.totalPage = Math.ceil($scope.totalItems / $scope.itemsPerPage);
             };
+            $scope.deletePanel = function (id) {
+                CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
+                    ApiService.deletePanel(localStorage.accessToken, id, function () {
+                        ApiService.getPanels(localStorage.accessToken, function (response) {
+                            $scope.panels = response.data;
+                        })
+                    })
+                }, function () {
+
+                })
+            }
+            $scope.onView = function (item) {
+                $scope.viewItem = item;
+            }
+            $scope.onEdit = function(item){
+                $scope.editItem = item;
+            }
+            $scope.editPanel = function(item){
+                ApiService.editPanel(localStorage.accessToken, item, function(){
+                    ApiService.getPanels(localStorage.accessToken, function (response) {
+                        $scope.panels = response.data;
+                    })
+                })
+            }
         })
     })

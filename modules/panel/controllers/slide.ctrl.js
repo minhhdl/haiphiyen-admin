@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('com.module.panel')
-    .controller('SlideCtrl', function (ApiService, $scope, $window) {
+    .controller('SlideCtrl', function (ApiService, $scope, $window, CoreService) {
         $scope.loading = true;
         $scope.searchText = '';
         ApiService.getSlides(localStorage.accessToken, function (response) {
@@ -26,5 +26,29 @@ angular.module('com.module.panel')
                 $scope.currentPage = 1; //reset to first paghe
                 $scope.totalPage = Math.ceil($scope.totalItems / $scope.itemsPerPage);
             };
+            $scope.deleteSlide = function (id) {
+                CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
+                    ApiService.deleteSlide(localStorage.accessToken, id, function () {
+                        ApiService.getSlides(localStorage.accessToken, function (response) {
+                            $scope.slides = response.data;
+                        })
+                    })
+                }, function () {
+
+                })
+            }
+            $scope.onView = function (item) {
+                $scope.viewItem = item;
+            }
+            $scope.onEdit = function(item){
+                $scope.editItem = item;
+            }
+            $scope.editSlide = function(item){
+                ApiService.editSlide(localStorage.accessToken, item, function(){
+                    ApiService.getSlides(localStorage.accessToken, function (response) {
+                        $scope.slides = response.data;
+                    })
+                })
+            }
         })
     })

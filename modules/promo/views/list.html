@@ -22,15 +22,27 @@
             <tr>
                 <th ng-click="orderMe('id')">
                     No.
-
+                    <div class="sorting" ng-show="myOrder =='id'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='id'"></i>
                 </th>
                 <th ng-click="orderMe('title')">
                     Tiêu đề
-
+                    <div class="sorting" ng-show="myOrder =='title'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='title'"></i>
                 </th>
                 <th ng-click="orderMe('createdAt')">
                     Đăng lúc
-
+                    <div class="sorting" ng-show="myOrder =='createdAt'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='createdAt'"></i>
                 </th>
                 <th></th>
             </tr>

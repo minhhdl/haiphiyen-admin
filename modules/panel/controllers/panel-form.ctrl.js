@@ -5,13 +5,15 @@ angular.module('com.module.panel')
 
         $scope.panel = {};
         $scope.onSubmit = function () {
-            4
-            $scope.panel.image = $('input[name=image]').get(0).files[0];
+            var link = $('input[name=link]').val();
+            var index = $('input[name=index]').val();
+            var image = $('input[name=image]').get(0).files[0];
             var formData = new FormData();
-            formData.append('image', $scope.panel.image);
-            formData.append('link', $scope.panel.link);
-            formData.append('index', $scope.panel.index);
-            ApiService.addPanel(localStorage.accessToken, $scope.panel, function (response) {
+            formData.append('image', image);
+            formData.append('link', link);
+            formData.append('index', index);
+            console.log($scope.panel, formData)
+            ApiService.addPanel(localStorage.accessToken, formData, function (response) {
                 CoreService.toastSuccess('Success!');
                 $state.go('app.panel.list');
             })

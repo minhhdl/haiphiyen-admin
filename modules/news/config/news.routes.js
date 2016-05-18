@@ -1,4 +1,4 @@
-angular.module('com.module.thue')
+angular.module('com.module.news')
     .config(function ($stateProvider) {
         $stateProvider
             .state('app.news', {

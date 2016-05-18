@@ -122,7 +122,35 @@ td span{
   width: 500px;
   margin: 0 auto;
 }
+.sort-me{
+  color: #777;
+  float: right;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+.sorting{
+  display: inline-block;
+  float: right;
+  color: #333;
+}
+.show-image{
+  display: none;
+} 
+.image-table{
+  height: 300px; 
+  width: 200px;
+}
+
 /*responsive*/
+@media screen and (max-width: 460px){
+  .show-image{
+    display: block;
+  }
+  .image-table{
+    display: none;
+  }
+}
 @media screen and (max-width: 560px){
   body.fixed .wrapper {
     padding-top: 50px;

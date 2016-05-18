@@ -31,7 +31,7 @@ angular.module('com.module.core')
                     "icon": "fa-edit",
                     "subList": [{
                         "name": "Phí",
-                        "sref": "app.phi.list"
+                        "sref": "app.priceOptions.list"
                     }]
                 }, {
                     "name": "Cộng tác viên",
