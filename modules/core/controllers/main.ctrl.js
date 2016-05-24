@@ -51,9 +51,6 @@ angular.module('com.module.core')
                     }, {
                         "name": "Tạo tài khoản",
                         "sref": "app.users.add"
-                    }, {
-                        "name": "Thống kê",
-                        "sref": ""
                     }]
                 }, {
                     "name": "Khuyến mãi",

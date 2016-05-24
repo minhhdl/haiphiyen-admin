@@ -151,7 +151,7 @@ td span{
 .text-center ul.pagination {
   margin-bottom: 30px;
 }
-.receipt-info, .contact-info, .ticket-info, .price-detail, .passenger-detail {
+.receipt-info, .contact-info, .ticket-info, .price-detail, .passenger-detail, .payment-method {
   border-bottom: 1px solid silver;
 }
 .basic-info, .receipt-info, .contact-info, .ticket-info h4{

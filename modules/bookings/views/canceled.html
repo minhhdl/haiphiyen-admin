@@ -257,6 +257,19 @@
                         <p class="total-price-text">Tổng cộng: <span class="text-red">{{viewItem.price|currency:'':0}} VND</span></p>
                     </div>
                 </div>
+                <div class="payment-method">
+                    <h4 class="modal-title">Phương thức thanh toán</h4>
+                    <p ng-show="viewItem.paymentDetail.method == 'at_store'">Tại văn phòng <span class="text-red">Vé Máy Bay Hải Phi Yến</span></p>
+                    <p ng-show="viewItem.paymentDetail.method == 'bank'">
+                        Chuyển khoản ngân hàng
+                        <span class="text-red" ng-show="viewItem.paymentDetail.bank == 'hdbank'"> HDBank</span>
+                        <span class="text-red" ng-show="viewItem.paymentDetail.bank == 'vietcombank'"> Vietcombank</span>
+                        <span class="text-red" ng-show="viewItem.paymentDetail.bank == 'mbbank'"> MBBank</span>
+                        <span class="text-red" ng-show="viewItem.paymentDetail.bank == 'techcombank'"> Techcombank</span>
+                        <span class="text-red" ng-show="viewItem.paymentDetail.bank == 'agribank'"> Agribank</span>
+                        <span class="text-red" ng-show="viewItem.paymentDetail.bank == 'bidv'"> BIDV</span>
+                    </p>
+                </div>
                 <div class="contact-info">
                     <h4 class="modal-title">Liên hệ</h4>
                     <div class="info-group">
