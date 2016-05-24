@@ -32,7 +32,6 @@ angular.module('com.module.core')
         }
 
         $rootScope.stateStarter = $state.current;
-        console.log($rootScope.stateStarter)
 
         $scope.menuoptions = [{
             "menuList": [
