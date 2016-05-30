@@ -45,7 +45,7 @@ angular.module('com.module.panel')
                 $scope.editItem = item;
             }
             $scope.editSlide = function(item){
-                ApiService.update('slides', localStorage.accessToken, item, function(){
+                ApiService.update('slides', localStorage.accessToken, item.id, item, function(){
                     ApiService.find('slides', localStorage.accessToken, function (response) {
                         CoreService.toastSuccess('Success!');
                         $scope.slides = response.data;

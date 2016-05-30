@@ -44,7 +44,7 @@ angular.module('com.module.panel')
                 $scope.editItem = item;
             }
             $scope.editPanel = function(item){
-                ApiService.update('panels', localStorage.accessToken, item, function(){
+                ApiService.update('panels', localStorage.accessToken, item.id, item, function(){
                     ApiService.find('panels', localStorage.accessToken, function (response) {
                         CoreService.toastSuccess('Success!');
                         $scope.panels = response.data;

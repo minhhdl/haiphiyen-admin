@@ -6,7 +6,6 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
 
 
     function error(response) {
-        console.log(response)
         if (response.status == 401) {
             var config = {
                 title: 'Thông báo',
@@ -217,5 +216,22 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
             });
     }
 
+    this.updateStatusBooking = function(token, item, successCb){
+        $http({
+            method: 'PUT',
+            url: apiURL + 'bookings/' + item.identity + '/status',
+            data: {status: item.status},
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+                return;
+            }, function errorCallback(response) {
+                error(response);
+                return;
+            });
+    }
     
 });
