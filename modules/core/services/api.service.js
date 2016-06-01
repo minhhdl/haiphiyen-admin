@@ -113,8 +113,7 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
             url: apiURL + endPoint,
             data: data,
             headers: {
-                'Authorization': 'Bearer ' + token,
-                'contentType': undefined
+                'Authorization': 'Bearer ' + token
             }
         })
             .then(function successCallback(response) {
@@ -233,5 +232,55 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
                 return;
             });
     }
-    
+
+    this.addSP = function (endpoint, token, data, successCb, errorCb) {
+        $http({
+            method: 'POST',
+            url: apiURL + endpoint,
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': undefined
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.editSP = function (endpoint, token, id, data, successCb, errorCb) {
+        $http({
+            method: 'PUT',
+            url: apiURL + endpoint + '/' + id,
+            data: data,
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': undefined
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+    this.deleteSP = function (endpoint, token, id, successCb, errorCb) {
+        $http({
+            method: 'DELETE',
+            url: apiURL + endpoint + '/' + id,
+            headers: {
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then(function successCallback(response) {
+                successCb(response);
+            }, function errorCallback(response) {
+                error(response);
+            });
+    }
+
+
 });
