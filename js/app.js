@@ -39,6 +39,7 @@
             'com.module.settings',
             'com.module.users',
             'com.module.bookings',
+            'com.module.cheapTicket',
             'com.module.priceOptions',
             'com.module.promo',
             'com.module.news',

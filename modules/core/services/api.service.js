@@ -6,6 +6,7 @@ app.service('ApiService', function ($http, $window, $location, CoreService, $sta
 
 
     function error(response) {
+        CoreService.toastError('Lỗi', 'Vui lòng thử lại');
         if (response.status == 401) {
             var config = {
                 title: 'Thông báo',

@@ -1,0 +1,51 @@
+<div class="form-add-user">
+    <h4>
+        <a href="" ui-sref="^.list" class="btn btn-xs btn-default"><i class="fa fa-arrow-left"></i></a>
+        <span>Thêm vé rẻ</span>
+    </h4>
+
+    <form name="form">
+        <div class="form-group">
+            <label class="control-label">Điểm đi</label>
+            <select name="myInput" ng-model="cheapTicket.from" class="form-control" required>
+                <optgroup label="Quốc nội">
+                    <option ng-repeat="item in agentPlaces" value="{{item.code}}">
+                        {{item.code}} - {{item.name}}
+                    </option>
+                </optgroup>
+                <optgroup label="Quốc tế">
+                    <option ng-repeat="item in internationalPlaces" value="{{item.code}}">
+                        {{item.code}} - {{item.name}}
+                    </option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Điểm đến</label>
+            <select name="myInput" ng-model="cheapTicket.to" class="form-control" required>
+                <optgroup label="Quốc nội">
+                    <option ng-repeat="item in agentPlaces" value="{{item.code}}">
+                        {{item.code}} - {{item.name}}
+                    </option>
+                </optgroup>
+                <optgroup label="Quốc tế">
+                    <option ng-repeat="item in internationalPlaces" value="{{item.code}}">
+                        {{item.code}} - {{item.name}}
+                    </option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Ngày đi</label>
+            <input type="date" name="myInput" ng-model="cheapTicket.day_depart" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Giá mong muốn</label>
+            <input type="text" name="myInput" ng-model="cheapTicket.expect" class="form-control" required>
+        </div>
+        <div class="controls">
+            <button class="btn btn-success" ng-click="onSubmit()">Thêm</button>
+        </div>
+    </form>
+</div>
+

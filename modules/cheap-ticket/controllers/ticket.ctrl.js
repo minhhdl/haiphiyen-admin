@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('com.module.panel')
-    .controller('PanelCtrl', function (ApiService, $scope, $window, CoreService) {
+angular.module('com.module.cheapTicket')
+    .controller('TicketCtrl', function (ApiService, $scope, $window, CoreService) {
         $scope.loading = true;
         $scope.searchText = '';
-        ApiService.find('panels', localStorage.accessToken, function (response) {
-            $scope.panels = response.data;
+        ApiService.find('cheapest', localStorage.accessToken, function (response) {
+            console.log(response.data)
+            $scope.cheapTickets = response.data;
             $scope.myOrder = '';
             $scope.myReverse = true;
             $scope.loading = false;
@@ -18,37 +19,34 @@ angular.module('com.module.panel')
             $scope.currentPage = 1;
             $scope.itemsPerPage = $scope.viewby;
             $scope.maxSize = 5;
-            $scope.totalItems = $scope.panels.length;
+            $scope.totalItems = $scope.cheapTickets.length;
             $scope.totalPage = Math.ceil($scope.totalItems / $scope.itemsPerPage);
             $scope.setItemsPerPage = function (num) {
                 $scope.itemsPerPage = num;
                 $scope.currentPage = 1; //reset to first paghe
                 $scope.totalPage = Math.ceil($scope.totalItems / $scope.itemsPerPage);
             };
-            $scope.deletePanel = function (id) {
+            $scope.deleteUser = function (id) {
                 CoreService.confirm('Xác nhận', 'Bạn có thực sự muốn xóa', function () {
-                    ApiService.deleteSP('panels', localStorage.accessToken, id, function () {
-                        ApiService.find('panels', localStorage.accessToken, function (response) {
+                    ApiService.deleteById('cheapest', localStorage.accessToken, id, function () {
+                        ApiService.find('cheapest', localStorage.accessToken, function (response) {
                             CoreService.toastSuccess('Success!');
-                            $scope.panels = response.data;
+                            $scope.cheapTickets = response.data;
                         })
                     })
                 }, function () {
 
                 })
             }
-            $scope.onView = function (item) {
-                $scope.viewItem = item;
-            }
-            $scope.onEdit = function(item){
+            $scope.onEdit = function (item) {
                 $scope.editItem = item;
             }
-            $scope.editPanel = function(item){
-                ApiService.editSP('panels', localStorage.accessToken, item.id, item, function(){
-                    ApiService.find('panels', localStorage.accessToken, function (response) {
+            $scope.editCheapTicket = function(item){
+                ApiService.update('cheapest', localStorage.accessToken, item.id, item, function(){
+                    ApiService.find('cheapest', localStorage.accessToken, function (response) {
                         $('#editModal').modal('hide')
                         CoreService.toastSuccess('Success!');
-                        $scope.panels = response.data;
+                        $scope.cheapTickets = response.data;
                     })
                 })
             }

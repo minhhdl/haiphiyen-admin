@@ -1,0 +1,142 @@
+<span ng-show="loading">Loading...</span>
+<div ng-show="!loading" class='list-group'>
+    <div ng-show="cheapTickets.length" class="row table-header-bar" ng-model="filter">
+        <div class="select-item-perpage pull-left col-md-4 col-sm-6 col-xs-6">
+            <label class="count-number-of">Số lượng trên trang: </label>
+            <select ng-model="viewby" ng-change="setItemsPerPage(viewby)">
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>30</option>
+                <option>40</option>
+                <option>50</option>
+            </select>
+        </div>
+        <div class="input-group pull-right col-md-4 col-sm-6 col-xs-6">
+            <input class="form-control" type="text" placeholder="Search" ng-model="searchText">
+        </div>
+    </div>
+    <div class="table-wraper">
+        <table ng-show="cheapTickets.length" class="table table-bordered" style="background-color: #ffffff">
+            <thead>
+            <tr>
+                <th ng-click="orderMe('id')">
+                    No.
+                    <div class="sorting" ng-show="myOrder =='id'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='id'"></i>
+                </th>
+                <th ng-click="orderMe('fromPlace')">
+                    Chặng
+                    <div class="sorting" ng-show="myOrder =='fromPlace'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='fromPlace'"></i>
+                </th>
+                <th ng-click="orderMe('name')">
+                    Hãng
+                    <div class="sorting" ng-show="myOrder =='name'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='name'"></i>
+                </th>
+                <th ng-click="orderMe('createdAt')">
+                    Giá mong muốn
+                    <div class="sorting" ng-show="myOrder =='createdAt'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='createdAt'"></i>
+                </th>
+                <th ng-click="orderMe('totalBookings')">
+                    Giá thấp nhất
+                    <div class="sorting" ng-show="myOrder =='totalBookings'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='totalBookings'"></i>
+                </th>
+                <th ng-click="orderMe('totalBookings')">
+                    Cập nhật lúc
+                    <div class="sorting" ng-show="myOrder =='totalBookings'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='totalBookings'"></i>
+                </th>
+                <th>
+                    Thao tác
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in items = cheapTickets.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:myOrder:myReverse | filter:searchText">
+                <td>
+                    {{items.indexOf(item) + 1}}
+                </td>
+                <td>
+                    {{item.fromPlace}} -- {{item.toPlace}}
+                </td>
+                <td>
+                    {{item.source}}
+                </td>
+                <td>
+                    {{item.expect|currency:'VND ':0}}
+                </td>
+                <td>
+                    {{item.price}}
+                </td>
+                <td>
+                    {{item.updatedAt}}
+                </td>
+                <td>
+                    <span class="btn btn-warning btn-xs" ng-click="onEdit(item)" data-toggle="modal" data-target="#editModal">Sửa</span>
+                    <span class="btn btn-danger btn-xs" ng-click="deleteUser(item.id)">Xóa</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div ng-hide="!cheapTickets.length" class="text-center">
+        <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm"
+                        boundary-links="true" force-ellipses="true" items-per-page="itemsPerPage"
+                        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;"
+                        last-text="&raquo;"></uib-pagination>
+    </div>
+
+    <div ng-show="!cheapTickets.length" class="list-group-item">
+        <h4 class="list-group-item-heading" translate>
+            Không có vé rẻ nào tại đây
+        </h4>
+
+        <p class="list-group-item-text" translate>Nhấn <a href="" ui-sref="^.add">vào đây</a> để thêm vé rẻ</p>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Cập nhật giá mong muốn</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label">Giá mong muốn</label>
+                    <input class="form-control" ng-model="editItem.expect"/>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-success" ng-click="editCheapTicket(editItem)">Cập nhật</button>
+                    <button class="btn btn-default" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">Huỷ bỏ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

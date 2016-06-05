@@ -36,6 +36,16 @@ angular.module('com.module.core')
         $scope.menuoptions = [{
             "menuList": [
                 {
+                    "name": "Tìm vé rẻ",
+                    "icon": "fa-ticket",
+                    "subList": [{
+                        "name": "Danh sách",
+                        "sref": "app.cheapTicket.list"
+                    }, {
+                        "name": "Thêm chặng mới",
+                        "sref": "app.cheapTicket.add"
+                    }]
+                }, {
                     "name": "Thuế + Phí",
                     "icon": "fa-edit",
                     "subList": [{

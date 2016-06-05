@@ -62,6 +62,7 @@ angular.module('com.module.bookings')
                     }
                     ApiService.updateStatusBooking(localStorage.accessToken, item, function(){
                         ApiService.find('bookings/uncompleted', localStorage.accessToken, function(result){
+                            $('#updateStatus').modal('hide');
                             $scope.bookings = result.data;
                             CoreService.toastSuccess('Success!');
                         })

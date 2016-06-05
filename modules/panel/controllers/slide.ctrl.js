@@ -47,6 +47,7 @@ angular.module('com.module.panel')
             $scope.editSlide = function(item){
                 ApiService.editSP('slides', localStorage.accessToken, item.id, item, function(){
                     ApiService.find('slides', localStorage.accessToken, function (response) {
+                        $('#editModal').modal('hide')
                         CoreService.toastSuccess('Success!');
                         $scope.slides = response.data;
                     })
