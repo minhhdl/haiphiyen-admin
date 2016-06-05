@@ -20,7 +20,8 @@ angular.module('com.module.cheapTicket')
                         $scope.agentPlaces = response.data.items;
                         $scope.internationalPlaces = result.data.items;
                         $scope.onSubmit = function(){
-                            console.log($scope.cheapTicket)
+                            $scope.cheapTicket.date_depart = $('input[name="date_depart"]').val();
+                            $scope.cheapTicket.date_depart = $scope.cheapTicket.date_depart.split("-").reverse().join("/");
                             ApiService.create('cheapest', localStorage.accessToken, $scope.cheapTicket, function (response) {
                                 CoreService.toastSuccess('Success!');
                                 $state.go('^.list');

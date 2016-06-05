@@ -5,7 +5,6 @@ angular.module('com.module.cheapTicket')
         $scope.loading = true;
         $scope.searchText = '';
         ApiService.find('cheapest', localStorage.accessToken, function (response) {
-            console.log(response.data)
             $scope.cheapTickets = response.data;
             $scope.myOrder = '';
             $scope.myReverse = true;
