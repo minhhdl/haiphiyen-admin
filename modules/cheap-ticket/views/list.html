@@ -20,13 +20,13 @@
         <table ng-show="cheapTickets.length" class="table table-bordered" style="background-color: #ffffff">
             <thead>
             <tr>
-                <th ng-click="orderMe('id')">
-                    No.
-                    <div class="sorting" ng-show="myOrder =='id'">
+                <th ng-click="orderMe('title')">
+                    Tiêu đề
+                    <div class="sorting" ng-show="myOrder =='title'">
                         <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
                         <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
                     </div>
-                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='id'"></i>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='title'"></i>
                 </th>
                 <th ng-click="orderMe('fromPlace')">
                     Chặng
@@ -36,13 +36,13 @@
                     </div>
                     <i class="fa fa-exchange sort-me" ng-hide="myOrder =='fromPlace'"></i>
                 </th>
-                <th ng-click="orderMe('name')">
-                    Hãng
-                    <div class="sorting" ng-show="myOrder =='name'">
+                <th ng-click="orderMe('date')">
+                    Ngày khởi hành
+                    <div class="sorting" ng-show="myOrder =='date'">
                         <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
                         <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
                     </div>
-                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='name'"></i>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='date'"></i>
                 </th>
                 <th ng-click="orderMe('createdAt')">
                     Giá mong muốn
@@ -60,6 +60,14 @@
                     </div>
                     <i class="fa fa-exchange sort-me" ng-hide="myOrder =='totalBookings'"></i>
                 </th>
+                <th ng-click="orderMe('name')">
+                    Hãng
+                    <div class="sorting" ng-show="myOrder =='name'">
+                        <i class="fa fa-sort-amount-asc" ng-show="!myReverse"></i>
+                        <i class="fa fa-sort-amount-desc" ng-show="myReverse"></i>
+                    </div>
+                    <i class="fa fa-exchange sort-me" ng-hide="myOrder =='name'"></i>
+                </th>
                 <th ng-click="orderMe('totalBookings')">
                     Cập nhật lúc
                     <div class="sorting" ng-show="myOrder =='totalBookings'">
@@ -76,19 +84,22 @@
             <tbody>
             <tr ng-repeat="item in items = cheapTickets.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:myOrder:myReverse | filter:searchText">
                 <td>
-                    {{items.indexOf(item) + 1}}
+                    {{item.title}}
                 </td>
                 <td>
                     {{item.fromPlace}} -- {{item.toPlace}}
                 </td>
                 <td>
-                    {{item.source}}
+                    {{item.date}}
                 </td>
                 <td>
                     {{item.expect|currency:'VND ':0}}
                 </td>
                 <td>
                     {{item.price|currency:'VND ':0}}
+                </td>
+                <td>
+                    {{item.source}}
                 </td>
                 <td>
                     {{item.updatedAt}}

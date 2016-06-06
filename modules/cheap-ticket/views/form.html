@@ -6,6 +6,10 @@
 
     <form name="form">
         <div class="form-group">
+            <label class="control-label">Tiêu đề</label>
+            <input type="text" name="myInput" ng-model="cheapTicket.title" class="form-control" required>
+        </div>
+        <div class="form-group">
             <label class="control-label">Điểm đi</label>
             <select name="myInput" ng-model="cheapTicket.from" class="form-control" required>
                 <optgroup label="Quốc nội">
